@@ -1,10 +1,10 @@
 -- Mason setup
-require("mason").setup()
-require("mason-lspconfig").setup {
-    ensure_installed = { "lua_ls" }
+require('mason').setup()
+require('mason-lspconfig').setup {
+    ensure_installed = { 'lua_ls', 'omnisharp' }
 }
 
-local cmp = require("cmp")
+local cmp = require('cmp')
 cmp.setup({
     snippet = {
       -- REQUIRED - you must specify a snippet engine
@@ -67,5 +67,8 @@ cmp.setup.cmdline(':', {
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
 require('lspconfig')['lua_ls'].setup {
+    capabilities = capabilities
+}
+require('lspconfig')['omnisharp'].setup {
     capabilities = capabilities
 }
